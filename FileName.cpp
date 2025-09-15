@@ -6,7 +6,7 @@ int main()
 {
 	int FruitCount = -10;
 
-	string HelloWorld = "Hello World";
+	string HelloWorld = "Hello";
 
 	cout << HelloWorld << endl; cout << FruitCount << endl;
 
