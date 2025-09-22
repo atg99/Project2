@@ -21,16 +21,17 @@ int main()
 	cout << Sum; cout << "\n";
 	cout << Sum3 << endl;
 
-	for (int i = 0; i < 5; i++)
+	int Count = 0;
+	cin >> Count;
+
+	for (int i = 0; i < Count; i++)
 	{
 		for (int k = 0; k <= i; k++)
 		{
 			cout << " ";
 		}
-		for (int j = 0; j <= 4-i; j++)
+		for (int j = 0; j <= (Count-1)-i; j++)
 		{
-			
-
 			cout << "*";
 		}
 		cout << "\n";
