@@ -1,5 +1,6 @@
 #include <iostream> //cpp standard
 #include "conio.h" //c standard
+#include "./L0922.h"
 
 using namespace std;
 
@@ -9,11 +10,30 @@ using namespace std;
 #define DOWN 's'
 #define QUIT 'q'
 
+const int Y = 10;
+const int X = 10;
+int World[Y][X] =
+{
+	{1,1,1,1,1,1,1,1,1,1},
+	{1,0,0,0,0,0,0,0,0,1},
+	{1,0,0,0,0,0,0,0,0,1},
+	{1,0,0,0,0,0,0,0,0,1},
+	{1,0,0,0,0,0,0,0,0,1},
+	{1,0,0,0,0,0,0,0,0,1},
+	{1,0,0,0,0,0,0,0,0,1},
+	{1,0,0,0,0,0,0,0,0,1},
+	{1,0,0,0,0,0,0,0,0,1},
+	{1,1,1,1,1,1,1,1,1,1}
+};
+
+
 int DrawMap(int PlayerX, int PlayerY);
 
 class Character
 {
+
 public:
+
 	int LocX = 0;
 	int LocY = 0;
 
@@ -22,13 +42,13 @@ public:
 
 	}
 
-	
 };
 
 class Player : public Character
 {
 
 public:
+
 	pair<int, int> PlayerDirection = { 0,0 };
 
 	Player(int LocX, int LocY) : Character(LocX, LocY)
@@ -60,8 +80,12 @@ public:
 
 	void ProcessLocation()
 	{
-		LocX += PlayerDirection.first;
-		LocY += PlayerDirection.second;
+		if (!World[LocX + PlayerDirection.first][LocY + PlayerDirection.second])
+		{
+			LocX += PlayerDirection.first;
+			LocY += PlayerDirection.second;
+		}
+		return;
 	}
 };
 
@@ -69,12 +93,13 @@ int main()
 {
 	Player UserCharacter(5, 5);
 
+	TestString();
+
 	//frame, deltaseconds
 	while (true)
 	{
 		UserCharacter.GetInput();
 		UserCharacter.ProcessLocation();
-		system("cls");
 		DrawMap(UserCharacter.LocX, UserCharacter.LocY);
 	}
 
@@ -83,26 +108,11 @@ int main()
 
 int DrawMap(int PlayerX, int PlayerY)
 {
-	printf("");
+
+	system("cls");
 
 	char PlayerShape = 'p';
 	char Sprites[10] = { ' ','*', };
-
-	const int Y = 10;
-	const int X = 10;
-	int World[Y][X] =
-	{
-		{1,1,1,1,1,1,1,1,1,1},
-		{1,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,1},
-		{1,1,1,1,1,1,1,1,1,1}
-	};
 
 	//Render();
 	for (int i = 0; i < Y; ++i)
