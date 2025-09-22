@@ -15,9 +15,28 @@ int main()
 	{
 		Sum3 += i;
 	}
+
 	//cout 버퍼에 저장
 	//endl 버퍼 해제
-	cout << Sum << endl;
+	cout << Sum; cout << "\n";
 	cout << Sum3 << endl;
+
+	for (int i = 0; i < 5; i++)
+	{
+		for (int k = 0; k <= i; k++)
+		{
+			cout << " ";
+		}
+		for (int j = 0; j <= 4-i; j++)
+		{
+			
+
+			cout << "*";
+		}
+		cout << "\n";
+	}
+
+
 	return 0;
 }
+
